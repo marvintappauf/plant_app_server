@@ -21,8 +21,8 @@ class PlantTable extends Migration
             $table->string('description');
             $table->string('rootLevel');
             $table->string('maxGrowth');
-            $table->json('plantCompatibility');
-            $table->dateTime('date');
+            $table->string('plantCompatibility');
+            $table->dateTime('currentDate');
             $table->timestamps();
         });
     }
