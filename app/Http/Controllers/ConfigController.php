@@ -94,6 +94,13 @@ class ConfigController extends Controller
         ]);
     }
 
+    public function get($id) {
+    
+        $config = Config::find($id);		
+        return response()->json($config);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *

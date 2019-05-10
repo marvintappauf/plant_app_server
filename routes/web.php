@@ -23,6 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/phpinfo', function() { phpinfo(); });
+Route::get('/config/{id}', 'ConfigController@get')->name('config.get');
+Route::get('/config', 'ConfigController@all')->name('config.all');
 
 
 Route::get('/plants', 'PlantController@all')->name('plants.all');
