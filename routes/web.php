@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/phpinfo', function() { phpinfo(); });
 Route::get('/config/{id}', 'ConfigController@get')->name('config.get');
-Route::post('/config/{id}', 'ConfigController@update')->name('config.update');
+Route::post('/config/', 'ConfigController@update')->name('config.update');
 Route::get('/config', 'ConfigController@all')->name('config.all');
 
 

@@ -81,9 +81,9 @@ class ConfigController extends Controller
      * @param  \App\Config  $Config
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Config $Config)
+    public function update(Request $request)
     {
-        $config = Config::find($Config);
+        $config = Config::find($request['id']);
         $config->fill($request->all());
 
         $config->save();
