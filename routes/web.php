@@ -23,9 +23,9 @@ Route::get('/', function () {
 });
 
 Route::get('/phpinfo', function() { phpinfo(); });
-Route::get('/config/{id}', 'ConfigController@get')->name('config.get');
-Route::post('/config/{id}', 'ConfigController@update');
-Route::get('/config', 'ConfigController@all')->name('config.all');
+//Route::get('/config/{id}', 'ConfigController@get')->name('config.get');
+//Route::get('/config', 'ConfigController@all')->name('config.all');
+Route::resource('config','ConfigController');
 
 
 Route::get('/plants', 'PlantController@all')->name('plants.all');

@@ -81,16 +81,13 @@ class ConfigController extends Controller
      * @param  \App\Config  $Config
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Config $Config)
     {
-        $config = Config::find($id);
-        $config->fill($request->all());
-
-        $config->save();
+        $Config->update($request->all());
 
         return response()->json([
             'message' => 'config updated',
-            'Config' => $config
+            'Config' => $Config
         ]);
     }
 
