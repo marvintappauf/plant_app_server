@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/phpinfo', function() { phpinfo(); });
 
 
-Route::get('/plants', 'PPlantController@all')->name('plants.all');
+Route::get('/plants', 'PlantController@all')->name('plants.all');
 
-Route::post('/plants/', 'PPlantController@store')->name('plants.store');
+Route::post('/plants/', 'PlantController@store')->name('plants.store');
+Route::post('/plants/update', 'PlantController@statusUpdate')->name('plants.statusUpdate');

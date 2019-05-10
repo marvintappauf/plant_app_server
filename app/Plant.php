@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plant extends Model
+class plant extends Model
 {
-    //
+    protected $fillable = ['plantSpecies', 'plantFamily', 'genus', 'description', 'rootLevel', 'maxGrowth', 'plantCompatibility', 'date'];
 }

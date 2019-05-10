@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\pPlant;
-use App\plant_attribute;
+use App\Plant;
+use App\PlantAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class PPlantController extends Controller
+class PlantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +17,15 @@ class PPlantController extends Controller
      */
     public function index()
     {
-	    $plants = PPlant::all();
+	    $plants = Plant::all();
 
 	    return response()->json($plants);
     }
 
     public function all() {
     
-    $plants = DB::table('p_plants')
-            ->leftJoin('plant_attribute', 'plant_attribute.plantId', '=', 'p_plants.id')
+    $plants = DB::table('plants')
+            ->leftJoin('plant_attribute', 'plant_attribute.plantId', '=', 'plants.id')
             ->get(); 
 		return response()->json($plants);
 
@@ -41,6 +41,22 @@ class PPlantController extends Controller
         //
     }
 
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function statusUpdate(Request $request)
+    {
+        $plantAttribute = PlantAttribute::create($request->all());
+
+        return response()->json([
+            'message' => 'Plant updated!',
+            'PlantAttributes' => $plantAttribute
+        ]);
+	}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -54,33 +70,31 @@ class PPlantController extends Controller
             'type' => 'required',
         ]);
 
-        $plant = pPlant::create($request->all());
-        $plantAttribute = plant_attribute::create($request->all());
+        $plant = Plant::create($request->all());
 
         return response()->json([
             'message' => 'Great success! New Plant created',
-            'Plant' => $plant,
-            'PlantAttributes' => $plantAttribute
+            'Plant' => $plant
         ]);
 	}
     /**
      * Display the specified resource.
      *
-     * @param  \App\pPlant  $pPlant
+     * @param  \App\Plant  $Plant
      * @return \Illuminate\Http\Response
      */
-    public function show(pPlant $pPlant)
+    public function show(Plant $Plant)
     {
-        return $pPlant;
+        return $Plant;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\pPlant  $pPlant
+     * @param  \App\Plant  $Plant
      * @return \Illuminate\Http\Response
      */
-    public function edit(pPlant $pPlant)
+    public function edit(Plant $Plant)
     {
         //
     }
@@ -89,10 +103,10 @@ class PPlantController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pPlant  $pPlant
+     * @param  \App\Plant  $Plant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pPlant $pPlant)
+    public function update(Request $request, Plant $Plant)
     {
         //
     }
@@ -100,10 +114,10 @@ class PPlantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\pPlant  $pPlant
+     * @param  \App\Plant  $Plant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pPlant $pPlant)
+    public function destroy(Plant $Plant)
     {
         //
     }
